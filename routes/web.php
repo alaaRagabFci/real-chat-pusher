@@ -1,5 +1,5 @@
 <?php
-
+// use App\Events\ChatEvent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     event(new ChatEvent('hello world'));
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'MessageController@index')->name('home');
+Route::get('/message/{id}', 'MessageController@getMessage')->name('message');
+Route::post('message', 'MessageController@sendMessage');
